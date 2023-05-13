@@ -1,0 +1,20 @@
+<div class="container">
+  <label [ngClass]="{
+    'label-focus': isFocused,
+    'label': !isFocused
+    }"
+  >
+   {{ name }}
+  </label>
+  <input
+    [ngClass]="{
+      'input-focus': isFocused,
+      'border-0 border-bottom': !isFocused
+    }"
+    (click)="showMessage()"
+    (focus)="changeFocus()"
+    (blur)="changeFocus()"
+    type="text"
+    placeholder="{{ placeholder }}"
+  >
+</div>

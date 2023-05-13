@@ -1,0 +1,19 @@
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* background-color: green; */
+}
+
+.input-box {
+  width: 45%;
+}
+
+.checkbox-box {
+  width: 45%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
