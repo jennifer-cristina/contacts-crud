@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -13,8 +14,19 @@ import { TableComponent } from './components/table/table.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, InputComponent, ContainerComponent, FormComponent, CheckboxComponent, ButtonComponent, LineComponent, TableComponent, FooterComponent],
-  imports: [BrowserModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    InputComponent,
+    ContainerComponent,
+    FormComponent,
+    CheckboxComponent,
+    ButtonComponent,
+    LineComponent,
+    TableComponent,
+    FooterComponent,
+  ],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
