@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class ContactModel extends Model
 {
     protected $table = 'tb_contact';
-    protected $fillable = ['name', 'birth_date', 'email', 'profession', 'phone', 'cell_phone'];
+
+    protected $fillable = [
+        'name',
+        'birth_date',
+        'email',
+        'profession',
+        'phone',
+        'cell_phone',
+        'has_whatsapp',
+        'sms_notification',
+        'email_notification'
+    ];
 
     use HasFactory;
 }

@@ -21,7 +21,7 @@ class CreateTbContact extends Migration
             $table->string('profession', 50)->nullable(false);
             $table->string('phone', 15)->nullable(false);
             $table->string('cell_phone', 15)->nullable(false);
-            $table->boolean('whatsapp_notification')->default(false);
+            $table->boolean('has_whatsapp')->default(false);
             $table->boolean('sms_notification')->default(false);
             $table->boolean('email_notification')->default(false);
             $table->timestamps();

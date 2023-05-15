@@ -56,7 +56,10 @@ class ContactController extends Controller
             'email'=> 'required|max:150|email',
             'profession'=> 'required|max:50|string',
             'phone'=> 'required|max:15|min:10|regex:/^[0-9]*$/',
-            'cell_phone'=> 'required|max:15|min:10|regex:/^[0-9]*$/'
+            'cell_phone'=> 'required|max:15|min:10|regex:/^[0-9]*$/',
+            'has_whatsapp'=> 'boolean',
+            'sms_notification'=> 'boolean',
+            'email_notification'=> 'boolean',
         ]);
 
         if($validated->fails()) {
