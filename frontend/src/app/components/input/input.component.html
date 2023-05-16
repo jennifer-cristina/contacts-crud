@@ -11,10 +11,11 @@
       'input-focus': isFocused,
       'border-0 border-bottom': !isFocused
     }"
-    (click)="showMessage()"
     (focus)="changeFocus()"
     (blur)="changeFocus()"
     type="text"
     placeholder="{{ placeholder }}"
+    formControlName="{{ formControlName }}"
+    id="{{ id }}"
   >
 </div>

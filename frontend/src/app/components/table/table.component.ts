@@ -13,11 +13,24 @@ export class TableComponent {
 
   constructor(private contactService: ContactService) {
     this.getContacts();
+    this.contactService.contact$.subscribe((contact) => {
+      console.log(contact);
+      this.contacts = [...this.contacts, contact.data];
+    });
   }
 
   getContacts() {
     this.contactService
       .getAll()
       .subscribe((response) => (this.contacts = response.data));
+  }
+
+  deleteContact(contact: Contact) {
+    this.contacts = this.contacts.filter((a) => contact !== a);
+    this.contactService.deleteContact(contact.id).subscribe();
+  }
+
+  editContact(id: number) {
+    this.contactService.getContactById(id);
   }
 }

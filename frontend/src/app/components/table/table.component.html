@@ -16,8 +16,8 @@
         <td>{{ contact.email }}</td>
         <td>{{ contact.cell_phone }}</td>
         <td>
-          <button type="button" class="btn"><img img src="../../../assets/editar.png" alt="Logo" width="20" height="20" class="align-text-center "></button>
-          <button type="button" class="btn"><img img src="../../../assets/excluir.png" alt="Logo" width="25" height="25" class="align-text-center "></button>
+          <button (click)="editContact(contact.id)" type="button" class="btn"><img img src="../../../assets/editar.png" alt="Logo" width="20" height="20" class="align-text-center "></button>
+          <button (click)="deleteContact(contact)" type="button" class="btn"><img img src="../../../assets/excluir.png" alt="Logo" width="25" height="25" class="align-text-center "></button>
         </td>
       </tr>
     </tbody>

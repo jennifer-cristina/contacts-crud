@@ -1,41 +1,59 @@
-<form id="form">
+<form [formGroup]="contactForm" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)" id="form">
   <div class="container">
     <div class="container-fluid pt-5">
       <div class="input-box pb-5">
-        <app-input
-          name="Nome completo"
-          placeholder="Ex.: Letícia Pacheco dos Santos"
-        />
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input type="text" class="form-control" name="name" id="name" formControlName="name">
+        </div>
+        <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="name.errors?.['required']">O nome é obrigatório.</p>
+        </div>
       </div>
       <div class="input-box pb-5">
-        <app-input
-          name="Data de nascimento"
-          placeholder="Ex.: 03/10/2003"
-        />
+        <div class="form-group">
+          <label for="birth_date">Data de nascimento</label>
+          <input type="text" class="form-control" name="birth_date" id="birth_date" formControlName="birth_date">
+        </div>
+        <div *ngIf="birth_date.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="birth_date.errors?.['required']">A data de nascimento é obrigatório.</p>
+        </div>
       </div>
       <div class="input-box pb-5">
-        <app-input
-          name="E-mail"
-          placeholder="Ex.: leticia@gmail.com"
-        />
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" id="email" formControlName="email">
+        </div>
+        <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="email.errors?.['required']">O email é obrigatório.</p>
+        </div>
       </div>
       <div class="input-box pb-5">
-        <app-input
-          name="Profissão"
-          placeholder="Ex.: Desenvolvedora Web"
-        />
+        <div class="form-group">
+          <label for="profession">Profissão</label>
+          <input type="text" class="form-control" name="profession" id="profession" formControlName="profession">
+        </div>
+        <div *ngIf="profession.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="profession.errors?.['required']">A profissão é obrigatório.</p>
+        </div>
       </div>
       <div class="input-box pb-5">
-        <app-input
-          name="Telefone para contato"
-          placeholder="Ex.: (11) 4033-2019"
-        />
+        <div class="form-group">
+          <label for="phone">Telefone para contato</label>
+          <input type="text" class="form-control" name="phone" id="phone" formControlName="phone">
+        </div>
+        <div *ngIf="phone.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="phone.errors?.['required']">O Telefone é obrigatório.</p>
+        </div>
       </div>
       <div class="input-box pb-5">
-        <app-input
-          name="Celular para contato"
-          placeholder="Ex.: (11) 98493-2039"
-        />
+        <div class="form-group">
+          <label for="cell_phone">Celular para contato</label>
+          <input type="text" class="form-control" name="cell_phone" id="cell_phone" formControlName="cell_phone">
+        </div>
+        <div *ngIf="cell_phone.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="cell_phone.errors?.['required']">O Celular é obrigatório.</p>
+        </div>
       </div>
       <div class="checkbox-box">
         <app-checkbox information="Número de celular possui Whatsapp"></app-checkbox>
@@ -45,7 +63,8 @@
         <app-checkbox information="Enviar notificação por E-mail"></app-checkbox>
       </div>
       <div class="input-box w-100 pb-5 d-flex justify-content-end">
-        <app-button></app-button>
+        <input *ngIf="formMethod === 'SAVE'" type="submit" class="btn btn-primary mt-4" value="Cadastrar contato">
+        <input *ngIf="formMethod === 'EDIT'" type="submit" class="btn btn-primary mt-4" value="Editar contato">
       </div>
     </div>
   </div>
