@@ -7,18 +7,22 @@ import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Contact, CreateOrUpdateContact } from '../models/contact';
 import { ApiResponse } from '../models/api';
+import {
+  formatContactToSave,
+  formatDateToPTBR,
+} from '../utils/contact-formatter';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
   public contact = new Subject<ApiResponse<Contact>>();
-
+  public contacts = new Subject<ApiResponse<Contact[]>>();
   public selectedContact = new Subject<Contact>();
 
   contact$ = this.contact.asObservable();
-
   selectedContact$ = this.selectedContact.asObservable();
+  contacts$ = this.contacts.asObservable();
 
   private apiUrl = 'http://localhost:8000/api/contacts';
 
@@ -35,13 +39,18 @@ export class ContactService {
   getContactById(id: number) {
     this.http
       .get<ApiResponse<Contact>>(this.apiUrl + '/' + id)
-      .subscribe((response) => this.selectedContact.next(response.data));
+      .subscribe(({ data }) =>
+        this.selectedContact.next({
+          ...data,
+          birth_date: formatDateToPTBR(data.birth_date),
+        })
+      );
   }
 
   createContact(data: CreateOrUpdateContact): Observable<ApiResponse<Contact>> {
-    const test = this.http.post<ApiResponse<Contact>>(this.apiUrl, data);
+    const formattedData = formatContactToSave(data);
 
-    return test;
+    return this.http.post<ApiResponse<Contact>>(this.apiUrl, formattedData);
   }
 
   deleteContact(id: number) {
@@ -49,6 +58,11 @@ export class ContactService {
   }
 
   updateContact(id: number, data: CreateOrUpdateContact) {
-    return this.http.put<ApiResponse<Contact>>(`${this.apiUrl}/${id}`, data);
+    const formattedData = formatContactToSave(data);
+
+    return this.http.put<ApiResponse<Contact>>(
+      `${this.apiUrl}/${id}`,
+      formattedData
+    );
   }
 }

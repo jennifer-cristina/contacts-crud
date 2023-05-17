@@ -1,5 +1,12 @@
-<div class="form-check pb-3 m-2">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+<div class="form-check pb-3 m-2" [formGroup]="form">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    value=""
+    name="{{ name }}"
+    id="{{ id }}"
+    formControlName="{{ formControlName }}"
+  />
   <label class="form-check-label text-secondary" for="flexCheckDefault">
     {{ information }}
   </label>

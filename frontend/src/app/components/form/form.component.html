@@ -1,70 +1,281 @@
-<form [formGroup]="contactForm" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)" id="form">
+<form
+  [formGroup]="contactForm"
+  #formDir="ngForm"
+  (ngSubmit)="onSubmit(formDir)"
+  id="form"
+>
   <div class="container">
     <div class="container-fluid pt-5">
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="name">Nome Completo</label>
-          <input type="text" class="form-control" name="name" id="name" formControlName="name">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'name',
+              label: focusedInput !== 'name'
+            }"
+            for="name"
+          >
+            Nome Completo
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'name',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'name'
+            }"
+            (focus)="changeFocus('name')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            placeholder="Ex.: Letícia Pacheco dos Santos"
+            formControlName="name"
+          />
         </div>
         <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
           <p *ngIf="name.errors?.['required']">O nome é obrigatório.</p>
+          <p *ngIf="name.errors?.['minlength']">
+            O nome deve ter pelo menos 3 caracteres.
+          </p>
         </div>
       </div>
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="birth_date">Data de nascimento</label>
-          <input type="text" class="form-control" name="birth_date" id="birth_date" formControlName="birth_date">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'birth_date',
+              label: focusedInput !== 'birth_date'
+            }"
+            for="birth_date"
+          >
+            Data de nascimento
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'birth_date',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'birth_date'
+            }"
+            (focus)="changeFocus('birth_date')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="birth_date"
+            id="birth_date"
+            placeholder="Ex.: 03/10/2003"
+            formControlName="birth_date"
+            mask="00/00/0000"
+          />
         </div>
-        <div *ngIf="birth_date.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="birth_date.errors?.['required']">A data de nascimento é obrigatório.</p>
+        <div
+          *ngIf="birth_date.invalid && formDir.submitted"
+          class="validation-error"
+        >
+          <p *ngIf="birth_date.errors?.['required']">
+            A data de nascimento é obrigatório.
+          </p>
         </div>
       </div>
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" name="email" id="email" formControlName="email">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'email',
+              label: focusedInput !== 'email'
+            }"
+            for="email"
+          >
+            Email
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'email',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'email'
+            }"
+            (focus)="changeFocus('email')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="Ex.: leticia@gmail.com"
+            formControlName="email"
+          />
         </div>
-        <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+        <div
+          *ngIf="email.invalid && formDir.submitted"
+          class="validation-error"
+        >
           <p *ngIf="email.errors?.['required']">O email é obrigatório.</p>
         </div>
       </div>
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="profession">Profissão</label>
-          <input type="text" class="form-control" name="profession" id="profession" formControlName="profession">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'profession',
+              label: focusedInput !== 'profession'
+            }"
+            for="profession"
+          >
+            Profissão
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'profession',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'profession'
+            }"
+            (focus)="changeFocus('profession')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="profession"
+            id="profession"
+            placeholder="Ex.: Desenvolvedora Web"
+            formControlName="profession"
+          />
         </div>
-        <div *ngIf="profession.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="profession.errors?.['required']">A profissão é obrigatório.</p>
+        <div
+          *ngIf="profession.invalid && formDir.submitted"
+          class="validation-error"
+        >
+          <p *ngIf="profession.errors?.['required']">
+            A profissão é obrigatório.
+          </p>
         </div>
       </div>
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="phone">Telefone para contato</label>
-          <input type="text" class="form-control" name="phone" id="phone" formControlName="phone">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'phone',
+              label: focusedInput !== 'phone'
+            }"
+            for="phone"
+          >
+            Telefone para contato
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'phone',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'phone'
+            }"
+            (focus)="changeFocus('phone')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="phone"
+            id="phone"
+            placeholder="Ex.: (11) 4033-2019"
+            formControlName="phone"
+            mask="(00) 0000-0000"
+          />
         </div>
-        <div *ngIf="phone.invalid && formDir.submitted" class="validation-error">
+        <div
+          *ngIf="phone.invalid && formDir.submitted"
+          class="validation-error"
+        >
           <p *ngIf="phone.errors?.['required']">O Telefone é obrigatório.</p>
         </div>
       </div>
       <div class="input-box pb-5">
         <div class="form-group">
-          <label for="cell_phone">Celular para contato</label>
-          <input type="text" class="form-control" name="cell_phone" id="cell_phone" formControlName="cell_phone">
+          <label
+            [ngClass]="{
+              'label-focus': focusedInput === 'cell_phone',
+              label: focusedInput !== 'cell_phone'
+            }"
+            for="cell_phone"
+          >
+            Celular para contato
+          </label>
+          <input
+            [ngClass]="{
+              'input-focus': focusedInput === 'cell_phone',
+              'border-0 border-bottom rounded-0 p-0 pt-2 pb-2 border-2':
+                focusedInput !== 'cell_phone'
+            }"
+            (focus)="changeFocus('cell_phone')"
+            (blur)="changeFocus()"
+            type="text"
+            class="form-control"
+            name="cell_phone"
+            id="cell_phone"
+            placeholder="Ex.: (11) 98493-2039"
+            formControlName="cell_phone"
+            mask="(00) 00000-0000"
+          />
         </div>
-        <div *ngIf="cell_phone.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="cell_phone.errors?.['required']">O Celular é obrigatório.</p>
+        <div
+          *ngIf="cell_phone.invalid && formDir.submitted"
+          class="validation-error"
+        >
+          <p *ngIf="cell_phone.errors?.['required']">
+            O Celular é obrigatório.
+          </p>
+        </div>
+      </div>
+
+      <div class="checkbox-box">
+        <div class="form-check pb-3 m-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="false"
+            name="has_whatsapp"
+            id="has_whatsapp"
+            formControlName="has_whatsapp"
+          />
+          <label class="form-check-label text-secondary" for="flexCheckDefault">
+            Número de celular possui Whatsapp
+          </label>
+        </div>
+        <div class="form-check pb-3 m-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="false"
+            name="sms_notification"
+            id="sms_notification"
+            formControlName="sms_notification"
+          />
+          <label class="form-check-label text-secondary" for="flexCheckDefault">
+            Enviar notificações por SMS
+          </label>
         </div>
       </div>
       <div class="checkbox-box">
-        <app-checkbox information="Número de celular possui Whatsapp"></app-checkbox>
-        <app-checkbox information="Enviar notificação por SMS"></app-checkbox>
-      </div>
-      <div class="checkbox-box">
-        <app-checkbox information="Enviar notificação por E-mail"></app-checkbox>
+        <div class="form-check pb-3 m-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value="false"
+            name="email_notification"
+            id="email_notification"
+            formControlName="email_notification"
+          />
+          <label class="form-check-label text-secondary" for="flexCheckDefault">
+            Enviar notificações por E-mail
+          </label>
+        </div>
       </div>
       <div class="input-box w-100 pb-5 d-flex justify-content-end">
-        <input *ngIf="formMethod === 'SAVE'" type="submit" class="btn btn-primary mt-4" value="Cadastrar contato">
-        <input *ngIf="formMethod === 'EDIT'" type="submit" class="btn btn-primary mt-4" value="Editar contato">
+        <input
+          *ngIf="formMethod === 'SAVE'"
+          type="submit"
+          class="btn btn-primary mt-4"
+          value="Cadastrar contato"
+        />
+        <input
+          *ngIf="formMethod === 'EDIT'"
+          type="submit"
+          class="btn btn-primary mt-4"
+          value="Editar contato"
+        />
       </div>
     </div>
   </div>

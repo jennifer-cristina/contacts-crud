@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {
+  ControlContainer,
+  FormGroup,
+  FormGroupDirective,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
@@ -6,9 +11,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./checkbox.component.css'],
 })
 export class CheckboxComponent implements OnInit {
-  constructor() {}
+  constructor(private rootFormGroup: FormGroupDirective) {}
+
+  public form!: FormGroup;
 
   @Input() information: string;
+  @Input() name: string;
+  @Input() id: string;
+  @Input() formControlName: string;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = <FormGroup>this.rootFormGroup.control;
+  }
 }

@@ -22,13 +22,22 @@ export class FormComponent implements OnInit {
     });
   }
 
+  focusedInput: string = '';
+  isFocused: boolean = false;
   contact?: Contact;
   contactForm!: FormGroup;
   contacts: Contact[] = [];
   formMethod: string = 'SAVE';
+  formDirect: FormGroupDirective;
 
   ngOnInit(): void {
     this.setFormData(this.contact);
+  }
+
+  changeFocus(inputName?: string) {
+    if (inputName) return (this.focusedInput = inputName);
+
+    return (this.focusedInput = '');
   }
 
   get name() {
@@ -56,23 +65,26 @@ export class FormComponent implements OnInit {
   }
 
   async onSubmit(formDirective: FormGroupDirective) {
+    this.formDirect = formDirective;
+
     if (this.contactForm.invalid) {
       return;
     }
 
     const data: Contact = this.contactForm.value;
 
-    if (this.formMethod === 'EDIT') {
-      return this.editContact(data);
-    }
+    if (this.formMethod === 'EDIT') return this.editContact(data);
 
     this.createContact(data);
   }
 
-  setFormData(data: Contact | undefined) {
+  setFormData(data?: Contact | undefined) {
     this.contactForm = new FormGroup({
       id: new FormControl(data ? data.id : undefined),
-      name: new FormControl(data ? data.name : '', [Validators.required]),
+      name: new FormControl(data ? data.name : '', [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
       birth_date: new FormControl(data ? data.birth_date : '', [
         Validators.required,
       ]),
@@ -84,20 +96,36 @@ export class FormComponent implements OnInit {
       cell_phone: new FormControl(data ? data.cell_phone : '', [
         Validators.required,
       ]),
+      has_whatsapp: new FormControl(data ? data.has_whatsapp : false),
+      sms_notification: new FormControl(data ? data.sms_notification : false),
+      email_notification: new FormControl(
+        data ? data.email_notification : false
+      ),
     });
   }
 
   createContact(data: CreateOrUpdateContact) {
-    this.contactService.createContact(data).subscribe((response) => {
-      this.contact = response.data;
-      this.contactService.contact.next(response);
+    this.contactService.createContact(data).subscribe(() => {
+      this.resetForm();
     });
   }
 
   editContact(data: Contact) {
     const { id, ...dataWithoutId } = data;
+    this.contactService.updateContact(id, dataWithoutId).subscribe(() => {
+      this.resetForm();
+    });
+  }
+
+  resetForm() {
+    if (this.formDirect) {
+      this.formDirect.resetForm();
+    }
+
+    this.contact = {} as Contact;
+
     this.contactService
-      .updateContact(id, dataWithoutId)
-      .subscribe((response) => console.log(response.message));
+      .getAll()
+      .subscribe((response) => this.contactService.contacts.next(response));
   }
 }
