@@ -50,7 +50,7 @@ layout da aplicação:
 ### Web
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="layout" title="#layout" src="./assets/" width="400px">
+  <img alt="layout" title="#layout" src="./frontend/src/assets/wireframe.jpg" width="400px">
 </p>
 
 ---
@@ -147,7 +147,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 🦸 Autora
 
 <a href="https://github.com/jennifer-cristina">
- <img style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/930209546645942316/930209702481117274/desenhoeu.jpeg" width="200px;" alt=""/>
+ <img style="border-radius: 50%;" src="./frontend/src/assets/profile.jpg" width="200px;" alt=""/>
 
 [![Linkedin Badge](https://img.shields.io/badge/-Jennifer-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/jennifer-cristina-221437207/)](https://www.linkedin.com/in/jennifer-cristina-221437207/) 
 [![Gmail Badge](https://img.shields.io/badge/-cristin4.jennifer@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:cristin4.jennifer@gmail.com)](mailto:cristin4.jennifer@gmail.com)
