@@ -31,15 +31,16 @@ Projeto desenvolvido para teste prático a empresa [Alphacode](https://site.alph
   - [x] Nome completo
   - [x] Data de nascimento
   - [x] Email
-  - [x] Profissão, segue exemplo: 
-    - Desenvolvedora fullstack
-    - Devops
-    - Gerente de projetos
-    - Tech Lead
+  - [x] Profissão
+  - [x] Telefone para contato
+  - [x] Celular para contato
+  - [x] Se o número de celular possui Whatsapp 
+  - [x] Se deseja receber notificações por SMS
+  - [x] Se deseja receber notificações por email
 
 - [x] Os usuários tem acesso a uma tabela com todos os contatos cadastrados
 - [x] Os usuários podem realizar a edição dos dados de um determinado contato
-- [x] Os usuários pode realizar a exlusão de um determinado contato
+- [x] Os usuários podem realizar a exlusão de um determinado contato
 
 ---
 
@@ -121,26 +122,24 @@ $ ng serve
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Website**  ([Angular](https://angular.io/)  +  [Bootstrap](https://getbootstrap.com/))
+#### **Frontend**
 
--   **[ngx-mask](https://github.com/JsDaddy/ngx-mask)**
--   **[angular-input-masks](https://github.com/assisrafael/angular-input-masks)**
--   **[rxjs](https://github.com/ReactiveX/rxjs)**
+-   **[Angular](https://angular.io/)**
+-   **[Bootstrap](https://getbootstrap.com/)**
 
-> Veja o arquivo  [package.json](https://github.com/jennifer-cristina/contacts-crud/blob/main/frontend/package.json)
+#### **Backend**
 
-#### **Server**  ([PHP](https://www.php.net/)  +  [Laravel](https://laravel.com/))
+-   **[PHP](https://www.php.net/)**
+-   **[Laravel](https://laravel.com/)**
 
--   **[Axios](https://axios-http.com/ptbr/docs/intro)**
+#### **Banco de dados**
 
-> Veja o arquivo  [package.json](https://github.com/jennifer-cristina/contacts-crud/blob/main/backend/package.json)
+- **[MySql](https://www.mysql.com/)**
 
 #### **Utilitários**
 
 -   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
--   Commit Conventional:  **[Commitlint](https://github.com/conventional-changelog/commitlint)**
 -   Teste de API:  **[Postman](https://www.postman.com/)**
--   Fontes:  **[Roboto](https://fonts.google.com/specimen/Roboto)**
 
 ---
 
