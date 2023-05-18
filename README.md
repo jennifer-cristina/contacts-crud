@@ -92,17 +92,11 @@ $
 
 ```bash
 
-# Clone este repositório
-$ git clone https://github.com/jennifer-cristina/contacts-crud
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd contacts-crud
-
 # Vá para a pasta da aplicação Back End
 $ cd backend
 
 # Instale as dependências
-$ npm install
+$ composer install
 
 # Execute a aplicação em modo de desenvolvimento
 $ php artisan serve
@@ -114,12 +108,6 @@ $ php artisan serve
 #### 🧭 Rodando a aplicação web (Frontend)
 
 ```bash
-
-# Clone este repositório
-$ git clone https://github.com/jennifer-cristina/contacts-crud
-
-# Acesse a pasta do projeto no seu terminal/cmd
-$ cd contacts-crud
 
 # Vá para a pasta da aplicação Front End
 $ cd frontend
