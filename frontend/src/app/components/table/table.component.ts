@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
+import { ToastrService } from 'ngx-toastr';
 
 import { ContactService } from 'src/app/services/contact.service';
-import {
-  formatContactToShow,
-  formatDateToPTBR,
-} from 'src/app/utils/contact-formatter';
+import { formatContactToShow, formatDateToPtBR } from 'src/app/utils';
 
 @Component({
   selector: 'app-table',
@@ -15,7 +13,10 @@ import {
 export class TableComponent implements OnInit {
   contacts: Contact[] = [];
 
-  constructor(private contactService: ContactService) {}
+  constructor(
+    private contactService: ContactService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getContacts();
@@ -39,7 +40,9 @@ export class TableComponent implements OnInit {
 
   deleteContact(contact: Contact) {
     this.contacts = this.contacts.filter((a) => contact !== a);
-    this.contactService.deleteContact(contact.id).subscribe();
+    this.contactService.deleteContact(contact.id).subscribe((data) => {
+      this.toastr.success('Contato apagado com sucesso');
+    });
   }
 
   editContact(id: number) {

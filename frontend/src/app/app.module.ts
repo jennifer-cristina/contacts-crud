@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -14,6 +15,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { LineComponent } from './components/line/line.component';
 import { TableComponent } from './components/table/table.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

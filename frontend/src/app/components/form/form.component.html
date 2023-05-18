@@ -75,6 +75,12 @@
           <p *ngIf="birth_date.errors?.['required']">
             A data de nascimento é obrigatório.
           </p>
+          <p *ngIf="birth_date.errors?.['invalidBirthDate']">
+            Informe uma data de nascimento válida.
+          </p>
+          <p *ngIf="birth_date.errors?.['pattern']">
+            Informe uma data de nascimento válida.
+          </p>
         </div>
       </div>
       <div class="input-box pb-5">
@@ -109,6 +115,7 @@
           class="validation-error"
         >
           <p *ngIf="email.errors?.['required']">O email é obrigatório.</p>
+          <p *ngIf="email.errors?.['email']">Insira um email válido.</p>
         </div>
       </div>
       <div class="input-box pb-5">
@@ -180,6 +187,7 @@
           class="validation-error"
         >
           <p *ngIf="phone.errors?.['required']">O Telefone é obrigatório.</p>
+          <p *ngIf="phone.errors?.['pattern']">Informe um telefone válido.</p>
         </div>
       </div>
       <div class="input-box pb-5">
@@ -216,6 +224,9 @@
         >
           <p *ngIf="cell_phone.errors?.['required']">
             O Celular é obrigatório.
+          </p>
+          <p *ngIf="cell_phone.errors?.['pattern']">
+            Informe um celular válido.
           </p>
         </div>
       </div>

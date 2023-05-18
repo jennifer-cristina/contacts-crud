@@ -5,8 +5,13 @@ import {
   FormControl,
   Validators,
   FormGroupDirective,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
 } from '@angular/forms';
 import { Contact, CreateOrUpdateContact } from 'src/app/models/contact';
+import { ToastrService } from 'ngx-toastr';
+import { formatDateToEnUS } from 'src/app/utils';
 
 @Component({
   selector: 'app-form',
@@ -14,7 +19,10 @@ import { Contact, CreateOrUpdateContact } from 'src/app/models/contact';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  constructor(private contactService: ContactService) {
+  constructor(
+    private contactService: ContactService,
+    private toastr: ToastrService
+  ) {
     this.contactService.selectedContact$.subscribe((contact) => {
       this.contact = contact;
       this.setFormData(contact);
@@ -78,6 +86,21 @@ export class FormComponent implements OnInit {
     this.createContact(data);
   }
 
+  dateValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      const enUsDate = formatDateToEnUS(value);
+
+      const birthDate = new Date(enUsDate).getTime();
+      const nowDate = new Date().getTime();
+
+      if (birthDate >= nowDate) return { invalidBirthDate: true };
+
+      return null;
+    };
+  }
+
   setFormData(data?: Contact | undefined) {
     this.contactForm = new FormGroup({
       id: new FormControl(data ? data.id : undefined),
@@ -87,14 +110,26 @@ export class FormComponent implements OnInit {
       ]),
       birth_date: new FormControl(data ? data.birth_date : '', [
         Validators.required,
+        this.dateValidator(),
       ]),
-      email: new FormControl(data ? data.email : '', [Validators.required]),
+      email: new FormControl(data ? data.email : '', [
+        Validators.required,
+        Validators.email,
+      ]),
       profession: new FormControl(data ? data.profession : '', [
         Validators.required,
       ]),
-      phone: new FormControl(data ? data.phone : '', [Validators.required]),
+      phone: new FormControl(data ? data.phone : '', [
+        Validators.required,
+        Validators.pattern(
+          /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        ),
+      ]),
       cell_phone: new FormControl(data ? data.cell_phone : '', [
         Validators.required,
+        Validators.pattern(
+          /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        ),
       ]),
       has_whatsapp: new FormControl(data ? data.has_whatsapp : false),
       sms_notification: new FormControl(data ? data.sms_notification : false),
@@ -105,15 +140,17 @@ export class FormComponent implements OnInit {
   }
 
   createContact(data: CreateOrUpdateContact) {
-    this.contactService.createContact(data).subscribe(() => {
+    this.contactService.createContact(data).subscribe((data) => {
       this.resetForm();
+      this.toastr.success(data.message);
     });
   }
 
   editContact(data: Contact) {
     const { id, ...dataWithoutId } = data;
-    this.contactService.updateContact(id, dataWithoutId).subscribe(() => {
+    this.contactService.updateContact(id, dataWithoutId).subscribe((data) => {
       this.resetForm();
+      this.toastr.success(data.message);
     });
   }
 
@@ -123,6 +160,7 @@ export class FormComponent implements OnInit {
     }
 
     this.contact = {} as Contact;
+    this.formMethod = 'SAVE';
 
     this.contactService
       .getAll()
