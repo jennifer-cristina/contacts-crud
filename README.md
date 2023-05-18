@@ -80,11 +80,21 @@ $ git clone https://github.com/jennifer-cristina/contacts-crud
 # Acesse a pasta do projeto
 $ cd contacts-crud
 
-# Vá para a pasta da aplicação Back end chamada database
+# Vá para a pasta chamada database
 $ cd database
 
 # Execute o import do banco a partir do arquivo seguinte
-$ 
+$ backup.sql
+
+# Configure a conexão com o banco de dados no arquivo
+$ backend/.env
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_contacts
+DB_USERNAME=<SEU USUARIO>
+DB_PASSWORD=<SUA SENHA>
 
 ```
 
@@ -101,7 +111,7 @@ $ composer install
 # Execute a aplicação em modo de desenvolvimento
 $ php artisan serve
 
-# O servidor inciará na porta:8000 - acesse http://localhost:8000 
+# O servidor inciará na porta:8000
 
 ```
 
