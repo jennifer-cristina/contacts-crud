@@ -31,15 +31,16 @@ Projeto desenvolvido para teste prático a empresa [Alphacode](https://site.alph
   - [x] Nome completo
   - [x] Data de nascimento
   - [x] Email
-  - [x] Profissão, segue exemplo: 
-    - Desenvolvedora fullstack
-    - Devops
-    - Gerente de projetos
-    - Tech Lead
+  - [x] Profissão
+  - [x] Telefone para contato
+  - [x] Celular para contato
+  - [x] Se o número de celular possui Whatsapp 
+  - [x] Se deseja receber notificações por SMS
+  - [x] Se deseja receber notificações por email
 
 - [x] Os usuários tem acesso a uma tabela com todos os contatos cadastrados
 - [x] Os usuários podem realizar a edição dos dados de um determinado contato
-- [x] Os usuários pode realizar a exlusão de um determinado contato
+- [x] Os usuários podem realizar a exlusão de um determinado contato
 
 ---
 
@@ -50,7 +51,7 @@ layout da aplicação:
 ### Web
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="layout" title="#layout" src="./assets/" width="400px">
+  <img alt="layout" title="#layout" src="./frontend/src/assets/wireframe.jpg" width="400px">
 </p>
 
 ---
@@ -121,33 +122,31 @@ $ ng serve
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Website**  ([Angular](https://angular.io/)  +  [Bootstrap](https://getbootstrap.com/))
+#### **Frontend**
 
--   **[ngx-mask](https://github.com/JsDaddy/ngx-mask)**
--   **[angular-input-masks](https://github.com/assisrafael/angular-input-masks)**
--   **[rxjs](https://github.com/ReactiveX/rxjs)**
+-   **[Angular](https://angular.io/)**
+-   **[Bootstrap](https://getbootstrap.com/)**
 
-> Veja o arquivo  [package.json](https://github.com/jennifer-cristina/contacts-crud/blob/main/frontend/package.json)
+#### **Backend**
 
-#### **Server**  ([PHP](https://www.php.net/)  +  [Laravel](https://laravel.com/))
+-   **[PHP](https://www.php.net/)**
+-   **[Laravel](https://laravel.com/)**
 
--   **[Axios](https://axios-http.com/ptbr/docs/intro)**
+#### **Banco de dados**
 
-> Veja o arquivo  [package.json](https://github.com/jennifer-cristina/contacts-crud/blob/main/backend/package.json)
+- **[MySql](https://www.mysql.com/)**
 
 #### **Utilitários**
 
 -   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
--   Commit Conventional:  **[Commitlint](https://github.com/conventional-changelog/commitlint)**
 -   Teste de API:  **[Postman](https://www.postman.com/)**
--   Fontes:  **[Roboto](https://fonts.google.com/specimen/Roboto)**
 
 ---
 
 ## 🦸 Autora
 
 <a href="https://github.com/jennifer-cristina">
- <img style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/930209546645942316/930209702481117274/desenhoeu.jpeg" width="200px;" alt=""/>
+ <img style="border-radius: 50%;" src="./frontend/src/assets/profile.jpg" width="200px;" alt=""/>
 
 [![Linkedin Badge](https://img.shields.io/badge/-Jennifer-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/jennifer-cristina-221437207/)](https://www.linkedin.com/in/jennifer-cristina-221437207/) 
 [![Gmail Badge](https://img.shields.io/badge/-cristin4.jennifer@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:cristin4.jennifer@gmail.com)](mailto:cristin4.jennifer@gmail.com)
