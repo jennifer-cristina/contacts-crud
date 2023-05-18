@@ -67,8 +67,26 @@ Este projeto é divido em duas partes:
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [PHP](https://www.php.net/), [Laravel](https://laravel.com/), [Composer](https://getcomposer.org/), [Angular](https://angular.io/). 
+[Git](https://git-scm.com), [PHP](https://www.php.net/), [Composer](https://getcomposer.org/), [Laravel](https://laravel.com/), [NodeJs](https://nodejs.org/en). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+#### 🎲 Criando o banco (banco de dados)
+
+```bash
+
+# Clone este repositório
+$ git clone https://github.com/jennifer-cristina/contacts-crud
+
+# Acesse a pasta do projeto
+$ cd contacts-crud
+
+# Vá para a pasta da aplicação Back end chamada database
+$ cd database
+
+# Execute o import do banco a partir do arquivo seguinte
+$ 
+
+```
 
 #### 🎲 Rodando o Backend (servidor)
 
