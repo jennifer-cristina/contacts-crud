@@ -125,6 +125,9 @@ $ cd frontend
 # Instale as dependências
 $ npm install
 
+# Instale o cli do angular
+$ npm install -g @angular/cli
+
 # Execute a aplicação em modo de desenvolvimento
 $ ng serve
 
