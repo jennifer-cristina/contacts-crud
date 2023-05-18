@@ -90,6 +90,8 @@ export class FormComponent implements OnInit {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
 
+      if (!value) return null;
+
       const enUsDate = formatDateToEnUS(value);
 
       const birthDate = new Date(enUsDate).getTime();

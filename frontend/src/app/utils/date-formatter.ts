@@ -10,7 +10,7 @@ export const formatDateToPtBR = (date: string) => {
 };
 
 export const formatDateToEnUS = (date: string) => {
-  const birthDateWithOnlyNumbers = date.replace(/[^a-zA-Z0-9]/g, '');
+  const birthDateWithOnlyNumbers = date?.replace(/[^a-zA-Z0-9]/g, '');
 
   const day = birthDateWithOnlyNumbers.substring(0, 2);
   const month = birthDateWithOnlyNumbers.substring(2, 4);
